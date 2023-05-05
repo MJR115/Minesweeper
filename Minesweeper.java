@@ -5,6 +5,7 @@ public class Minesweeper {
     public int dimX;
     public int dimY;
 
+    // public Cell[][] gameBoard(int x, int y) { }
 
     public char[ ][ ] gameBoard(int x, int y) {
 
@@ -28,7 +29,7 @@ public class Minesweeper {
         }
         return cell;
     }
-
+    // public void countAdjacentMines(CellFirstname[][] game) {}
     public void countAdjacentMines(char[][] a) {
         int numMines = 0;
         int colum = 0;
@@ -57,7 +58,7 @@ public class Minesweeper {
 
 
     }
-
+    // void setAllContents(Cell*[ ][ ] game) {}
     public void setAllContents(char[][] a) {
 
         for (int i = 0; i < 8; i++) {
@@ -67,6 +68,20 @@ public class Minesweeper {
             }
         }
     }
+
+    // void printBoard(Cell*[ ][ ] game, boolean mine) {}
+
+    /* public void play(CellFirstname[][] ) {
+          ask the user for row and column number
+          if they enter an incorrect cell, ask them again
+
+          if they stepped on a mine - the game is over
+          print the board
+
+          if they stepped on somewhere else
+          print the board
+    }
+    */
 
 
 
