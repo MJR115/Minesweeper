@@ -5,7 +5,7 @@ public class Minesweeper {
     public int dimX;
     public int dimY;
 
-
+public int i;
     public char[ ][ ] gameBoard(int x, int y) {
 
         char[][] cell = new char[8][8];
