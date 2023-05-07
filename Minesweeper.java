@@ -200,6 +200,10 @@ public class Minesweeper {
             String continueKey = sc.nextLine();
         }   
     }
+    
+    public void revealNeighbors(int i, int j){
+        // LATER: write code
+    }
 
 
 }
