@@ -1,4 +1,4 @@
-public class Cell {
+
     public class Cell {
         // instance variables
         private boolean hasMine;        // does the cell contain a mine?
@@ -26,19 +26,24 @@ public class Cell {
         public void setHasMine(boolean m) {
             hasMine = m;
         }
-        public void setIsEmpty(boolean e){
+
+        public void setIsEmpty(boolean e) {
             isEmpty = e;
         }
+
         public void setIsFlagged(boolean f) {
             isFlagged = f;
         }
-        public void setNumMines(int m){
+
+        public void setNumMines(int m) {
             numMines = m;
         }
-        public void setIsRevealed(boolean r){
+
+        public void setIsRevealed(boolean r) {
             isRevealed = r;
         }
-        public void setContent(char c){
+
+        public void setContent(char c) {
             content = c;
         }
 
@@ -46,19 +51,24 @@ public class Cell {
         public boolean getHasMine() {
             return hasMine;
         }
-        public boolean getIsEmpty(){
+
+        public boolean getIsEmpty() {
             return isEmpty;
         }
+
         public boolean getIsFlagged() {
             return isFlagged;
         }
-        public int getNumMines(){
+
+        public int getNumMines() {
             return numMines;
         }
-        public boolean getIsRevealed(){
+
+        public boolean getIsRevealed() {
             return isRevealed;
         }
-        public char getContent(){
+
+        public char getContent() {
             return content;
         }
     }
