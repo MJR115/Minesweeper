@@ -107,6 +107,7 @@ public class Minesweeper {
                 for (int j = 0; j < dimY; j++) {
                     if (a[i][j].getHasMine() == true) {
                         a[i][j].setIsRevealed(true);
+                        setAllContents(a);
                     }
                     System.out.print(a[i][j].getContent());
                 }
