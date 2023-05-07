@@ -198,7 +198,7 @@ public class Minesweeper {
             long end = System.currentTimeMillis();       // end time
             double time = end - start;// time in milliseconds. LATER: convert to minutes and seconds
             int minutes = (int) (time / 60000);
-            int seconds = (int) ((time / 1000) * (minutes * 60));
+            int seconds = (int) ((time / 1000) - (minutes * 60));
             System.out.printf("Time: " + minutes + " minutes " + seconds + " seconds");
             System.out.println();
             
