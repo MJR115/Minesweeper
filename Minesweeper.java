@@ -117,7 +117,7 @@ public class Minesweeper {
         outerloop:      // this label allows us to break from both loops at once as soon as we have proved there is not a winner
         for (int i = 0; i < dimX; i++) {
             for (int j = 0; j < dimY; j++) {
-                if (a[i][j].getIsRevealed() == false && a[i][j].getHasMine == false) {  // if there's a cell that isn't revealed and isn't a mine, no winner yet
+                if (a[i][j].getIsRevealed() == false && a[i][j].getHasMine() == false) {  // if there's a cell that isn't revealed and isn't a mine, no winner yet
                     check = false;
                     break outerloop;
                 } else {
@@ -148,40 +148,39 @@ public class Minesweeper {
         int turn = 1;
         
         for (; ;) {                                      // this loops indefinitely 
-            printBoard(a);                           
+            printBoard(a, false);                           
             long start = System.currentTimeMillis();     // this is the start time
         
             System.out.println("Line: ");
-            int row = sc.nextInt();                      // LATER: keep asking until user puts invalid input
+            int line = sc.nextInt();                      // LATER: keep asking until user puts invalid input
             System.out.println("Column: ");
-            int col = sc.nextInt();
+            int column = sc.nextInt();
             System.out.println("Turn " + turn);
             turn++;
-            a[row][col].setIsRevealed(true);
-            if (a[row][col].getHasMine == true) {
+            a[line][column].setIsRevealed(true);
+            if (a[line][column].getHasMine() == true) {
                 System.out.println("Mine! You lost!");
-                printBoard(a);
+                printBoard(a, true);
             }
             while (checkWinner(a) == false) {
                 // LATER: optional flagging
-                printBoard(a);
+                printBoard(a, false);
                 System.out.println("Line: ");
-                int row = sc.nextInt();                  // LATER: keep asking if user puts invalid input
+                int line = sc.nextInt();                  // LATER: keep asking if user puts invalid input
                 System.out.println("Column: ");
-                int col = sc.nextInt();
+                int column = sc.nextInt();
                 System.out.println("Turn " + turn);
                 turn++;
-                a[row][col].setIsRevealed(true);
-                if (a[row][col].getHasMine == true) {
+                a[line][column].setIsRevealed(true);
+                if (a[line][column].getHasMine() == true) {
                     System.out.println("Mine! You lost!");
-                    printBoard(a);
+                    printBoard(a, true);
                     break;
                 }
             }
             
             if (checkWinner(a) == true) {
                 System.out.println("Good job! You won!");
-                printBoard(a);
             }
         
             long end = System.currentTimeMillis();       // end time
