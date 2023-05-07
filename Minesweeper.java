@@ -73,17 +73,16 @@ public class Minesweeper {
             for (int j = 0; j < dimY; j++) {
                 
                 if (a[i][j].getIsFlagged() == true) {
-                        a[i][j].setContent('F');
-                    } else if (a[i][j].getIsRevealed() == false) {
-                        a[i][j].setContent('#');
-                    } else if (a[i][j].getHasMine() == true) {
-                        a[i][j].setContent('*');
-                    } else {
-                        char numMines = (char) (a[i][j].getNumMines() + '0');   // this should convert the int numMines to a char
-                        a[i][j].setContent(numMines);
-                    }
-                }   
-            }
+                    a[i][j].setContent('F');
+                } else if (a[i][j].getIsRevealed() == false) {
+                    a[i][j].setContent('#');
+                } else if (a[i][j].getHasMine() == true) {
+                    a[i][j].setContent('*');
+                } else {
+                    char numMines = (char) (a[i][j].getNumMines() + '0');   // this should convert the int numMines to a char
+                    a[i][j].setContent(numMines);
+                }
+            }   
         }
     }
 
