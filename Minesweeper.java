@@ -147,8 +147,7 @@ public class Minesweeper {
         Scanner sc = new Scanner(System.in);
         int turn = 1;
         
-        for (; ;) {                                      // this loops indefinitely 
-            printBoard(a, false);                           
+        for (; ;) {                                      // this loops indefinitely                           
             long start = System.currentTimeMillis();     // this is the start time
         
             System.out.println("Line: ");
