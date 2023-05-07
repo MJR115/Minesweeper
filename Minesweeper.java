@@ -70,9 +70,7 @@ public class Minesweeper {
     }
 
     public void setAllContents(Cell[][] a) {
-        
-        countAdjacentMines(a);
-        
+       
         for (int i = 0; i < dimX; i++) {
             for (int j = 0; j < dimY; j++) {
                 
@@ -91,6 +89,8 @@ public class Minesweeper {
     }
 
     public void printBoard(Cell[][] a, boolean m) {         // LATER: separate each cell with a tab and label lines and columns
+        
+        setAllContents(a);
         
         if (m == false) {
             for (int i = 0; i < dimX; i++) {
@@ -150,6 +150,7 @@ public class Minesweeper {
         
         Scanner sc = new Scanner(System.in);
         int turn = 1;
+        countAdjacentMines(a);
         
         for (; ;) {                                      // this loops indefinitely                           
             long start = System.currentTimeMillis();     // this is the start time
@@ -162,6 +163,7 @@ public class Minesweeper {
             System.out.println("Turn " + turn);
             turn++;
             a[line][column].setIsRevealed(true);
+            setAllContents(a);
             
             if (a[line][column].getHasMine() == true) {
                 System.out.println("Mine! You lost!");
@@ -173,12 +175,13 @@ public class Minesweeper {
                 // LATER: optional flagging
                 printBoard(a, false);
                 System.out.println("Line: ");
-                int line = sc.nextInt();                  // LATER: keep asking if user puts invalid input
+                line = sc.nextInt();                  // LATER: keep asking if user puts invalid input
                 System.out.println("Column: ");
-                int column = sc.nextInt();
+                column = sc.nextInt();
                 System.out.println("Turn " + turn);
                 turn++;
                 a[line][column].setIsRevealed(true);
+                setAllContents(a);
                 
                 if (a[line][column].getHasMine() == true) {
                     System.out.println("Mine! You lost!");
@@ -198,6 +201,8 @@ public class Minesweeper {
             
             System.out.println("Press any key to continue...");
             String continueKey = sc.nextLine();
+            
+            // FINISH - new array of cell objects - new game
         }   
     }
     
