@@ -52,13 +52,14 @@ public class Minesweeper {
         for (int i = 0; i < dimX; i++) {
             for (int j = 0; j < dimY; j++) {
 
-                for (int k = (i - 1); i <= (i + 1); k++) {
-                    for (int p = (j - 1); j <= (j + 1); p++) {
+                for (int k = (i - 1); k <= (i + 1); k++) {
+                    for (int p = (j - 1); p <= (j + 1); p++) {
                         
-                        if (i >= 0 && i <= dimX - 1) {
-                            if (j >= 0 && j <= dimY - 1) {
+                        if (k >= 0 && k < dimX) {
+                            if (p >= 0 && p < dimY) {
                                 if (a[k][p].getHasMine() == true) {
-                                    a[k][p].setNumMines(a[k][p].getNumMines() + 1);
+                               
+                                    a[i][j].setNumMines(a[i][j].getNumMines() + 1);
                                 }
                             }
                         }
@@ -69,6 +70,9 @@ public class Minesweeper {
     }
 
     public void setAllContents(Cell[][] a) {
+        
+        countAdjacentMines(a);
+        
         for (int i = 0; i < dimX; i++) {
             for (int j = 0; j < dimY; j++) {
                 
