@@ -158,9 +158,9 @@ public class Minesweeper {
             boolean lost = false;
             
             System.out.println("Line: ");
-            int line = sc.nextInt();                      // LATER: keep asking until user puts invalid input
+            int line = sc.nextInt() - 1;                      // LATER: keep asking until user puts invalid input
             System.out.println("Column: ");
-            int column = sc.nextInt();
+            int column = sc.nextInt() - 1;
             System.out.println("Turn " + turn);
             turn++;
             a[line][column].setIsRevealed(true);
