@@ -153,7 +153,8 @@ public class Minesweeper {
         
         for (; ;) {                                      // this loops indefinitely                           
             long start = System.currentTimeMillis();     // this is the start time
-        
+            boolean lost = false;
+            
             System.out.println("Line: ");
             int line = sc.nextInt();                      // LATER: keep asking until user puts invalid input
             System.out.println("Column: ");
@@ -161,11 +162,14 @@ public class Minesweeper {
             System.out.println("Turn " + turn);
             turn++;
             a[line][column].setIsRevealed(true);
+            
             if (a[line][column].getHasMine() == true) {
                 System.out.println("Mine! You lost!");
                 printBoard(a, true);
+                lost = true;
+                
             }
-            while (checkWinner(a) == false) {
+            while ((checkWinner(a) == false) && (lost == false)) {
                 // LATER: optional flagging
                 printBoard(a, false);
                 System.out.println("Line: ");
@@ -175,10 +179,11 @@ public class Minesweeper {
                 System.out.println("Turn " + turn);
                 turn++;
                 a[line][column].setIsRevealed(true);
+                
                 if (a[line][column].getHasMine() == true) {
                     System.out.println("Mine! You lost!");
                     printBoard(a, true);
-                    break;
+                    lost = true;
                 }
             }
             
