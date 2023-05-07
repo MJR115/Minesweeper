@@ -4,8 +4,10 @@
     Due May 8, 2023
 */
 
-
+import java.util.Scanner;
 import java.util.Random;
+import java.lang.*;
+
 public class Minesweeper {
 
     public int dimX;
@@ -46,7 +48,7 @@ public class Minesweeper {
         return cell;
     }
 
-    public void countAdjacentMines(Cell[][] a) {               // how does this method work if it is void?
+    public void countAdjacentMines(Cell[][] a) {               
         for (int i = 0; i < dimX; i++) {
             for (int j = 0; j < dimY; j++) {
 
@@ -85,7 +87,7 @@ public class Minesweeper {
         }
     }
 
-    public void printBoard(Cell[][] a, boolean m) {         // later on we will need to separate each cell with a tab and label lines and columns
+    public void printBoard(Cell[][] a, boolean m) {         // LATER: separate each cell with a tab and label lines and columns
         
         if (m == false) {
             for (int i = 0; i < dimX; i++) {
@@ -113,7 +115,7 @@ public class Minesweeper {
     public boolean checkWinner(Cell[][] a) {
         boolean check = false;
 
-        outerloop:      // this label should allow us to break from both loops at once as soon as we have proved there is not a winner
+        outerloop:      // this label allows us to break from both loops at once as soon as we have proved there is not a winner
         for (int i = 0; i < dimX; i++) {
             for (int j = 0; j < dimY; j++) {
                 if (a[i][j].getIsRevealed() == false && a[i][j].getHasMine == false) {  // if there's a cell that isn't revealed and isn't a mine, no winner yet
@@ -129,28 +131,68 @@ public class Minesweeper {
     }
 
     public void play(Cell[][] a) {
-        // PROCEDURE below
-        
-        // ask the user for row and column number
-        // if they enter an incorrect cell, ask them again
-    
-        // if they stepped on a mine - the game is over 
-        // print the board
-    
-        // if they stepped on somewhere else
-        // print the board
         
         /* Display a game board, see
         Start timer
         Ask the user for row and column number to reveal at
         Starting second round, first ask if user wants to flag a cell, and if so which cell to flag. Then ask the user to select a cell to reveal.
-        If they enter an incorrect cell, ask them again
+            If they enter an incorrect cell, ask them again
         If they stepped on a mine - the game is over
             Print the board
         If they stepped on somewhere else
             Print the board
-        Update the number of steps and number of mines unrevealed
+        Update the number of steps and number of mines unrevealed               // for the logic below I don't think we need to keep track of unrevealed mines?
         Stop timer when all mines are revealed or the game is lost */
+        
+        
+        Scanner sc = new Scanner(System.in);
+        int turn = 1;
+        
+        for (; ;) {                                      // this loops indefinitely 
+            printBoard(a);                           
+            long start = System.currentTimeMillis();     // this is the start time
+        
+            System.out.println("Line: ");
+            int row = sc.nextInt();                      // LATER: keep asking until user puts invalid input
+            System.out.println("Column: ");
+            int col = sc.nextInt();
+            System.out.println("Turn " + turn);
+            turn++;
+            a[row][col].setIsRevealed(true);
+            if (a[row][col].getHasMine == true) {
+                System.out.println("Mine! You lost!");
+                printBoard(a);
+            }
+            while (checkWinner(a) == false) {
+                // LATER: optional flagging
+                printBoard(a);
+                System.out.println("Line: ");
+                int row = sc.nextInt();                  // LATER: keep asking if user puts invalid input
+                System.out.println("Column: ");
+                int col = sc.nextInt();
+                System.out.println("Turn " + turn);
+                turn++;
+                a[row][col].setIsRevealed(true);
+                if (a[row][col].getHasMine == true) {
+                    System.out.println("Mine! You lost!");
+                    printBoard(a);
+                    break;
+                }
+            }
+            
+            if (checkWinner(a) == true) {
+                System.out.println("Good job! You won!");
+                printBoard(a);
+            }
+        
+            long end = System.currentTimeMillis();       // end time
+            double time = end - start;                   // time in milliseconds. LATER: convert to minutes and seconds
+            System.out.printf("Time: %.2f", time);
+            System.out.println;
+            
+            System.out.println("Press any key to continue...");
+            String continueKey = sc.nextLine();
+        }   
     }
 
 
