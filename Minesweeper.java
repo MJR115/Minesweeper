@@ -201,9 +201,9 @@ public class Minesweeper {
                     line = sc.nextInt() - 1;                      // LATER: keep asking until user puts invalid input
                     System.out.println("Column: ");
                     column = sc.nextInt() - 1;
+                    a[line][column].setIsRevealed(true);
                     System.out.println("Turn " + turn);
                     turn++;
-                    a[line][column].setIsRevealed(true);
                     revealNeighbors(line, column, a);
                     setAllContents(a);
                     break;
@@ -231,9 +231,9 @@ public class Minesweeper {
                         line = sc.nextInt() - 1;                  // LATER: keep asking if user puts invalid input
                         System.out.println("Column: ");
                         column = sc.nextInt() - 1;
+                        a[line][column].setIsRevealed(true);
                         System.out.println("Turn " + turn);
                         turn++;
-                        a[line][column].setIsRevealed(true);
                         revealNeighbors(line, column, a);
                         setAllContents(a);
                         break;
