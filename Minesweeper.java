@@ -195,17 +195,24 @@ public class Minesweeper {
             boolean lost = false;
             int line;
             int column;
+            String flag;
             while(true) {
                 try {
                     System.out.println("Line: ");
                     line = sc.nextInt() - 1;                      // LATER: keep asking until user puts invalid input
                     System.out.println("Column: ");
                     column = sc.nextInt() - 1;
+                    System.out.println("press F if you want to flag this cell. else, Press any key to continue... ");
+                    flag = sc.next();
+                    if(flag.equals("f") || flag.equals("F"))
+                        a[line][column].setIsFlagged(true);
+                    else {
                     a[line][column].setIsRevealed(true);
                     System.out.println("Turn " + turn);
                     turn++;
                     revealNeighbors(line, column, a);
                     setAllContents(a);
+                    }
                     break;
                 }
                 catch (java.util.InputMismatchException e) {
@@ -231,11 +238,17 @@ public class Minesweeper {
                         line = sc.nextInt() - 1;                  // LATER: keep asking if user puts invalid input
                         System.out.println("Column: ");
                         column = sc.nextInt() - 1;
-                        a[line][column].setIsRevealed(true);
-                        System.out.println("Turn " + turn);
-                        turn++;
-                        revealNeighbors(line, column, a);
-                        setAllContents(a);
+                        System.out.println("press F if you want to flag this cell. else, Press any key to continue... ");
+                        flag = sc.next();
+                        if(flag.equals("f") || flag.equals("F"))
+                            a[line][column].setIsFlagged(true);
+                        else {
+                            a[line][column].setIsRevealed(true);
+                            System.out.println("Turn " + turn);
+                            turn++;
+                            revealNeighbors(line, column, a);
+                            setAllContents(a);
+                        }
                         break;
                     } catch (java.util.InputMismatchException e) {
                         System.out.println("invalid input");
