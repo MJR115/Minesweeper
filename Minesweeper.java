@@ -241,7 +241,7 @@ public class Minesweeper {
             System.out.println();
             
             System.out.println("Press any key to continue...");
-            String continueKey = sc.nextLine();
+            String continueKey = sc.next();
             
             // FINISH - new array of cell objects - new game
             a = gameBoard(8, 15);
