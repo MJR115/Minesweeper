@@ -208,6 +208,11 @@ public class Minesweeper {
             String continueKey = sc.nextLine();
             
             // FINISH - new array of cell objects - new game
+            a = gameBoard(8, 15);
+            countAdjacentMines(a);
+            setAllContents(a);
+            turn = 1;
+            printBoard(a, false);
         }   
     }
     
