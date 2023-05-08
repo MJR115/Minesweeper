@@ -94,12 +94,29 @@ public class Minesweeper {
         
         if (m == false) {
             for (int i = 0; i < dimX; i++) {
+
+                if (i == 0)
+                    System.out.println("  Lines");
+
                 for (int j = 0; j < dimY; j++) {
-                    
-                    System.out.print(a[i][j].getContent());
+                    if(j == 0){
+                        System.out.print("\t" + (i + 1) + "\t");
+                    }
+                    System.out.print(a[i][j].getContent() + "\t");
                 }
                 System.out.println();
             }
+            System.out.print("\t");
+            for (int k = 1; k <= dimX; k ++) {
+                System.out.print("\t" + k);
+            }
+            System.out.println();
+
+            for (int l = 0; l <= (dimX/2); l++){
+                System.out.print("\t");
+            }
+            System.out.print("Columns");
+            System.out.println();
         
         // if the user chose a mine, reveal all mines
         } else {
