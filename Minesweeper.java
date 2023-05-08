@@ -202,6 +202,7 @@ public class Minesweeper {
                     line = sc.nextInt() - 1;                      // LATER: keep asking until user puts invalid input
                     System.out.println("Column: ");
                     column = sc.nextInt() - 1;
+                    a[line][column].getIsFlagged();
                     System.out.println("press F if you want to flag this cell. else, Press any key to continue... ");
                     flag = sc.next();
                     if(flag.equals("f") || flag.equals("F"))
@@ -238,6 +239,7 @@ public class Minesweeper {
                         line = sc.nextInt() - 1;                  // LATER: keep asking if user puts invalid input
                         System.out.println("Column: ");
                         column = sc.nextInt() - 1;
+                        a[line][column].getIsFlagged();
                         System.out.println("press F if you want to flag this cell. else, Press any key to continue... ");
                         flag = sc.next();
                         if(flag.equals("f") || flag.equals("F"))
