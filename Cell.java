@@ -12,10 +12,8 @@
         private boolean isRevealed;     // has the cell been revealed to the user?
         private char content;           // what to print to the screen for the cell
 
-        /* constructors (at least 3): creates a cell and initializes instance variables */
-        // FIXME - UNFINISHED: create cell and add more constructors
+        // constructors (at least 3): creates a cell and initializes instance variables
         public Cell() {
-            // create a cell
             hasMine = false;
             isEmpty = false;
             isFlagged = false;
@@ -23,10 +21,8 @@
             isRevealed = false;
             content = '#';
         }
-
-        // methods: get, set, & other access methods /
-        // FIXME - UNFINISHED: other access methods
-        // set methods /
+        
+        // set methods
         public void setHasMine(boolean m) {
             hasMine = m;
         }
@@ -51,7 +47,7 @@
             content = c;
         }
 
-        // get methods /
+        // get methods
         public boolean getHasMine() {
             return hasMine;
         }
