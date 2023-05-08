@@ -210,7 +210,22 @@ public class Minesweeper {
     }
     
     public void revealNeighbors(int i, int j){
-        // LATER: write code
+        if (a[i][j].getNumMines() == 0) {
+         a[i][j].setIsEmpty(true);
+      } 
+      if (a[i][j].getIsEmpty() == true) {
+         for (int k = (i - 1); k <= (i + 1); k++) {
+            for (int p = (j - 1); p <= (j + 1); p++) {
+                        
+               if (k >= 0 && k < dimX) {
+                  if (p >= 0 && p < dimY) { 
+                     a[k][p].setIsRevealed(true);
+                     setAllContents(a);
+                  }
+               }
+            }
+         }
+      }
     }
 
 
