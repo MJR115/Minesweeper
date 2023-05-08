@@ -88,7 +88,7 @@ public class Minesweeper {
         }
     }
 
-    public void printBoard(Cell[][] a, boolean m) {         // LATER: separate each cell with a tab and label lines and columns
+    public void printBoard(Cell[][] a, boolean m) {         
         
         setAllContents(a);
         
@@ -181,6 +181,7 @@ public class Minesweeper {
             System.out.println("Turn " + turn);
             turn++;
             a[line][column].setIsRevealed(true);
+            revealNeighbors(line, column, a);
             setAllContents(a);
             
             if (a[line][column].getHasMine() == true) {
@@ -199,6 +200,7 @@ public class Minesweeper {
                 System.out.println("Turn " + turn);
                 turn++;
                 a[line][column].setIsRevealed(true);
+                revealNeighbors(line, column, a);
                 setAllContents(a);
                 
                 if (a[line][column].getHasMine() == true) {
@@ -223,11 +225,31 @@ public class Minesweeper {
             String continueKey = sc.nextLine();
             
             // FINISH - new array of cell objects - new game
+            a = gameBoard(8, 15);
+            countAdjacentMines(a);
+            setAllContents(a);
+            turn = 1;
+            printBoard(a, false);
         }   
     }
     
     public void revealNeighbors(int i, int j){
-        // LATER: write code
+        if (a[i][j].getNumMines() == 0) {
+         a[i][j].setIsEmpty(true);
+      } 
+      if (a[i][j].getIsEmpty() == true) {
+         for (int k = (i - 1); k <= (i + 1); k++) {
+            for (int p = (j - 1); p <= (j + 1); p++) {
+                        
+               if (k >= 0 && k < dimX) {
+                  if (p >= 0 && p < dimY) { 
+                     a[k][p].setIsRevealed(true);
+                     setAllContents(a);
+                  }
+               }
+            }
+         }
+      }
     }
 
 
