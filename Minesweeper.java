@@ -88,7 +88,7 @@ public class Minesweeper {
         }
     }
 
-    public void printBoard(Cell[][] a, boolean m) {         // LATER: separate each cell with a tab and label lines and columns
+    public void printBoard(Cell[][] a, boolean m) {         
         
         setAllContents(a);
         
