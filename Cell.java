@@ -1,4 +1,8 @@
-
+/*  Assignment: PA4 Minesweeper
+    Cell.java
+    Name: Genevieve Britten and Amjad Rabaan (group work)
+    Due May 8, 2023
+*/
     public class Cell {
         // instance variables
         private boolean hasMine;        // does the cell contain a mine?
