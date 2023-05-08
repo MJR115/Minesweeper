@@ -164,6 +164,7 @@ public class Minesweeper {
             System.out.println("Turn " + turn);
             turn++;
             a[line][column].setIsRevealed(true);
+            revealNeighbors(line, column, a);
             setAllContents(a);
             
             if (a[line][column].getHasMine() == true) {
@@ -182,6 +183,7 @@ public class Minesweeper {
                 System.out.println("Turn " + turn);
                 turn++;
                 a[line][column].setIsRevealed(true);
+                revealNeighbors(line, column, a);
                 setAllContents(a);
                 
                 if (a[line][column].getHasMine() == true) {
