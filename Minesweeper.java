@@ -213,9 +213,9 @@ public class Minesweeper {
                 // LATER: optional flagging
                 printBoard(a, false);
                 System.out.println("Line: ");
-                line = sc.nextInt();                  // LATER: keep asking if user puts invalid input
+                line = sc.nextInt() - 1;                  // LATER: keep asking if user puts invalid input
                 System.out.println("Column: ");
-                column = sc.nextInt();
+                column = sc.nextInt() - 1;
                 System.out.println("Turn " + turn);
                 turn++;
                 a[line][column].setIsRevealed(true);
