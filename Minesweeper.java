@@ -215,7 +215,7 @@ public class Minesweeper {
             }
         
             long end = System.currentTimeMillis();       // end time
-            double time = end - start;// time in milliseconds. LATER: convert to minutes and seconds
+            double time = end - start;                  // time in milliseconds
             int minutes = (int) (time / 60000);
             int seconds = (int) ((time / 1000) - (minutes * 60));
             System.out.printf("Time: " + minutes + " minutes " + seconds + " seconds");
@@ -233,7 +233,7 @@ public class Minesweeper {
         }   
     }
     
-    public void revealNeighbors(int i, int j){
+    public void revealNeighbors(int i, int j, Cell[][] a){
         if (a[i][j].getNumMines() == 0) {
          a[i][j].setIsEmpty(true);
       } 
