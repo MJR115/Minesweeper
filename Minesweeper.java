@@ -7,6 +7,7 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.lang.*;
+import java.io.IOException;
 
 public class Minesweeper {
 
@@ -192,36 +193,53 @@ public class Minesweeper {
         for (; ;) {                                      // this loops indefinitely                           
             long start = System.currentTimeMillis();     // this is the start time
             boolean lost = false;
-            
-            System.out.println("Line: ");
-            int line = sc.nextInt() - 1;                      // LATER: keep asking until user puts invalid input
-            System.out.println("Column: ");
-            int column = sc.nextInt() - 1;
-            System.out.println("Turn " + turn);
-            turn++;
-            a[line][column].setIsRevealed(true);
-            revealNeighbors(line, column, a);
-            setAllContents(a);
-            
+            int line;
+            int column;
+            while(true) {
+                try {
+                    System.out.println("Line: ");
+                    line = sc.nextInt() - 1;                      // LATER: keep asking until user puts invalid input
+                    System.out.println("Column: ");
+                    column = sc.nextInt() - 1;
+                    System.out.println("Turn " + turn);
+                    turn++;
+                    a[line][column].setIsRevealed(true);
+                    revealNeighbors(line, column, a);
+                    setAllContents(a);
+                    break;
+                }
+                catch (java.util.InputMismatchException e) {
+                    System.out.println("invalid input");
+                    sc.nextLine();
+                }
+            }
             if (a[line][column].getHasMine() == true) {
                 System.out.println("Mine! You lost!");
                 printBoard(a, true);
                 lost = true;
-                
+
             }
             while ((checkWinner(a) == false) && (lost == false)) {
                 // LATER: optional flagging
                 printBoard(a, false);
-                System.out.println("Line: ");
-                line = sc.nextInt() - 1;                  // LATER: keep asking if user puts invalid input
-                System.out.println("Column: ");
-                column = sc.nextInt() - 1;
-                System.out.println("Turn " + turn);
-                turn++;
-                a[line][column].setIsRevealed(true);
-                revealNeighbors(line, column, a);
-                setAllContents(a);
-                
+                while(true) {
+                    try {
+                        System.out.println("Line: ");
+                        line = sc.nextInt() - 1;                  // LATER: keep asking if user puts invalid input
+                        System.out.println("Column: ");
+                        column = sc.nextInt() - 1;
+                        System.out.println("Turn " + turn);
+                        turn++;
+                        a[line][column].setIsRevealed(true);
+                        revealNeighbors(line, column, a);
+                        setAllContents(a);
+                        break;
+                    } catch (java.util.InputMismatchException e) {
+                        System.out.println("invalid input");
+                        sc.nextLine();
+                    }
+                }
+
                 if (a[line][column].getHasMine() == true) {
                     System.out.println("Mine! You lost!");
                     printBoard(a, true);
