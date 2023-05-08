@@ -1,5 +1,5 @@
 /*  Assignment: PA4 Minesweeper
-    Minesweeper.java
+    Test.java
     Name: Genevieve Britten and Amjad Rabaan (group work)
     Due May 8, 2023
 */
