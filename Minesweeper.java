@@ -212,6 +212,9 @@ public class Minesweeper {
                     System.out.println("invalid input");
                     sc.nextLine();
                 }
+                catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println(e.getMessage());
+                }
             }
             if (a[line][column].getHasMine() == true) {
                 System.out.println("Mine! You lost!");
@@ -237,6 +240,9 @@ public class Minesweeper {
                     } catch (java.util.InputMismatchException e) {
                         System.out.println("invalid input");
                         sc.nextLine();
+                    }
+                    catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
